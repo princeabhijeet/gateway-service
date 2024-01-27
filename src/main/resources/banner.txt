@@ -1,0 +1,5 @@
+
+
+	App		:		gateway-service
+	Port		:		${server.port}
+	Spring Boot     :		${spring-boot.formatted-version}	
