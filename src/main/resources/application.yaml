@@ -31,12 +31,14 @@ eureka:
     registry-fetch-interval-seconds: 10
     instance-info-replication-interval-seconds: 10
     service-url:
-      defaultZone: http://host.docker.internal:8761/eureka
+      defaultZone: ${EUREKA_DEFAULTZONE_URL:http://localhost:8761/eureka}
 
 # DEBUG = log matched routes | TRACE = log matched & unmatched routes    
 logging:
   level:
     '[org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping]': TRACE
+    
+EUREKA_DEFAULTZONE_URL: http://host.docker.internal:8761/eureka
 
   
 
