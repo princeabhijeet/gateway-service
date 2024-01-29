@@ -1,0 +1,42 @@
+
+server:
+  port: 8443
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+      - id: product-service
+        uri: lb://product-service
+        predicates:
+        - Path=/api/product/**
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path=/api/order/**
+      - id: payment-service
+        uri: lb://payment-service
+        predicates:
+        - Path=/api/payment/**
+    
+eureka:
+  instance:
+    #hostname: ${spring.application.name}
+    prefer-ip-address: false 
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 10
+    instance-info-replication-interval-seconds: 10
+    service-url:
+      defaultZone: http://host.docker.internal:8761/eureka
+
+# DEBUG = log matched routes | TRACE = log matched & unmatched routes    
+logging:
+  level:
+    '[org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping]': TRACE
+
+  
+
