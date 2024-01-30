@@ -23,7 +23,7 @@ spring:
     
 eureka:
   instance:
-    #hostname: ${spring.application.name}
+    hostname: eureka-0.eureka
     prefer-ip-address: false 
   client:
     fetch-registry: true
@@ -38,7 +38,7 @@ logging:
   level:
     '[org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping]': TRACE
     
-EUREKA_DEFAULTZONE_URL: http://host.docker.internal:8761/eureka
+EUREKA_DEFAULTZONE_URL: http://eureka-0.eureka:8761/eureka/
 
   
 
